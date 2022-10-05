@@ -730,7 +730,7 @@ impl<'a> PdfFont for PdfSimpleFont<'a> {
         if let Some(ref unicode_map) = self.unicode_map {
             let s = unicode_map.get(&char);
             let s = match s {
-                None => { panic!("missing char {:?} in map {:?}", char, unicode_map)}
+                None => { "�".to_string() }          //if invalid u8 sequence is found, replace with �
                 Some(s) => { s.clone() }
             };
             return s
